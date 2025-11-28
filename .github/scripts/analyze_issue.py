@@ -14,7 +14,7 @@ from tavily import TavilyClient
 # CONFIGURACAO
 # =============================================================================
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 SLACK_WEBHOOK_URL = os.environ.get("SLACK_WEBHOOK_URL")
 TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY")
 
@@ -61,7 +61,7 @@ def analyze_with_gemini(issue_title: str, issue_body: str) -> dict:
     Usa Gemini para analisar a issue.
     Retorna dict com: summary, suggestions, needs_research, search_results
     """
-    genai.configure(api_key=GEMINI_API_KEY)
+    genai.configure(api_key=GOOGLE_API_KEY)
 
     model = genai.GenerativeModel(
         model_name="gemini-2.0-flash-exp",
@@ -283,8 +283,8 @@ def main():
     print(f"🔍 Analisando issue #{ISSUE_NUMBER}: {ISSUE_TITLE}")
     print(f"👤 Atribuída para: {ASSIGNEE_USERNAME}")
 
-    if not GEMINI_API_KEY:
-        print("❌ GEMINI_API_KEY não configurada!")
+    if not GOOGLE_API_KEY:
+        print("❌ GOOGLE_API_KEY não configurada!")
         exit(1)
 
     # Analisar com Gemini

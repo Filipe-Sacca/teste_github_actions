@@ -7,6 +7,7 @@ on:
 jobs:
   analyze:
     runs-on: ubuntu-latest
+    environment: GOOGLE_API_KEY
     # Só roda se a issue tiver um assignee
     if: github.event.issue.assignee != null
 
@@ -35,7 +36,7 @@ jobs:
 
       - name: Run Issue Analyzer
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
