@@ -64,7 +64,7 @@ def analyze_with_gemini(issue_title: str, issue_body: str) -> dict:
     genai.configure(api_key=GOOGLE_API_KEY)
 
     model = genai.GenerativeModel(
-        model_name="gemini-1.5-flash",
+        model_name="gemini-2.0-flash",
         generation_config={
             "temperature": 0.7,
             "max_output_tokens": 1024,
@@ -241,7 +241,7 @@ def send_to_slack(analysis: dict) -> bool:
                 "elements": [
                     {
                         "type": "mrkdwn",
-                        "text": f"Criada por: {ISSUE_AUTHOR} | Análise por: Gemini 1.5 Flash"
+                        "text": f"Criada por: {ISSUE_AUTHOR} | Análise por: Gemini 2.0 Flash"
                     }
                 ]
             }
